@@ -33,12 +33,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Wingdings 2", 36F, System.Drawing.FontStyle.Bold);
+            this.button1.Font = new System.Drawing.Font("Yu Mincho", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button1.Location = new System.Drawing.Point(0, 94);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(665, 89);
@@ -49,7 +48,7 @@
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("MS PGothic", 48F, System.Drawing.FontStyle.Bold);
+            this.button2.Font = new System.Drawing.Font("Yu Mincho", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button2.Location = new System.Drawing.Point(0, 198);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(665, 89);
@@ -60,7 +59,7 @@
             // 
             // button3
             // 
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 48F);
+            this.button3.Font = new System.Drawing.Font("Yu Mincho", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button3.Location = new System.Drawing.Point(0, 301);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(665, 89);
@@ -72,29 +71,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Showcard Gothic", 48F, System.Drawing.FontStyle.Italic);
+            this.label1.Font = new System.Drawing.Font("Yu Gothic", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label1.Location = new System.Drawing.Point(0, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(528, 79);
+            this.label1.Size = new System.Drawing.Size(492, 82);
             this.label1.TabIndex = 3;
             this.label1.Text = "FlashCard App";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(584, 41);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(665, 390);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -102,7 +90,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.Text = "Main menu";
-            this.Load += new System.EventHandler(this.Main_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,6 +101,5 @@
         private Button button2;
         private Button button3;
         private Label label1;
-        private Button button4;
     }
 }

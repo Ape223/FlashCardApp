@@ -24,16 +24,5 @@ namespace FlashCardApp
         {
             System.Environment.Exit(0);
         }
-
-        private void Main_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            var a = new Login();
-            a.Show();
-            this.Dispose();
-        }
     }
 }

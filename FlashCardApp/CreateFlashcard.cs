@@ -89,9 +89,9 @@ namespace FlashCardApp
             private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
             {
                 //https://stackoverflow.com/questions/19834635/how-to-set-textbox-font-size-in-c
-                Font fnt = new Font(term.Font.FontFamily, Convert.ToInt32(comboBox1.Text));
-                term.Font = fnt;
-                definition.Font = fnt;
+               // Font fnt = new Font(term.Font.FontFamily, Convert.ToInt32(comboBox1.Text));
+                //term.Font = fnt;
+               // definition.Font = fnt;
             }
         //Event handler for when the user removes a card from the deck.
         //Gets the position of the card specified, then removes it from the list box.

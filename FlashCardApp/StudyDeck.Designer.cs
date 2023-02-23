@@ -43,28 +43,28 @@
             // 
             // listBox1
             // 
-            this.listBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.listBox1.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
+            this.listBox1.ItemHeight = 19;
             this.listBox1.Location = new System.Drawing.Point(3, 122);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(175, 264);
+            this.listBox1.Size = new System.Drawing.Size(175, 251);
             this.listBox1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("SimSun", 48F, System.Drawing.FontStyle.Italic);
-            this.label1.Location = new System.Drawing.Point(-8, -5);
+            this.label1.Font = new System.Drawing.Font("Yu Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.Location = new System.Drawing.Point(2, -2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(507, 64);
+            this.label1.Size = new System.Drawing.Size(406, 61);
             this.label1.TabIndex = 1;
             this.label1.Text = "Study Flashcard";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // LoadDeck
             // 
-            this.LoadDeck.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.LoadDeck.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoadDeck.Location = new System.Drawing.Point(3, 62);
             this.LoadDeck.Name = "LoadDeck";
             this.LoadDeck.Size = new System.Drawing.Size(175, 25);
@@ -84,7 +84,7 @@
             // 
             // RemoveDeck
             // 
-            this.RemoveDeck.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.RemoveDeck.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RemoveDeck.Location = new System.Drawing.Point(3, 92);
             this.RemoveDeck.Name = "RemoveDeck";
             this.RemoveDeck.Size = new System.Drawing.Size(175, 25);
@@ -116,17 +116,19 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(505, 31);
+            this.label2.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Location = new System.Drawing.Point(405, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.Size = new System.Drawing.Size(97, 19);
             this.label2.TabIndex = 9;
             this.label2.Text = "Cards loaded:";
             // 
             // easy
             // 
+            this.easy.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.easy.Location = new System.Drawing.Point(307, 352);
             this.easy.Name = "easy";
-            this.easy.Size = new System.Drawing.Size(64, 20);
+            this.easy.Size = new System.Drawing.Size(78, 26);
             this.easy.TabIndex = 10;
             this.easy.Text = "Easy";
             this.easy.UseVisualStyleBackColor = true;
@@ -134,9 +136,10 @@
             // 
             // medium
             // 
+            this.medium.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.medium.Location = new System.Drawing.Point(391, 352);
             this.medium.Name = "medium";
-            this.medium.Size = new System.Drawing.Size(64, 20);
+            this.medium.Size = new System.Drawing.Size(78, 26);
             this.medium.TabIndex = 11;
             this.medium.Text = "Medium";
             this.medium.UseVisualStyleBackColor = true;
@@ -144,9 +147,10 @@
             // 
             // hard
             // 
+            this.hard.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hard.Location = new System.Drawing.Point(476, 352);
             this.hard.Name = "hard";
-            this.hard.Size = new System.Drawing.Size(64, 20);
+            this.hard.Size = new System.Drawing.Size(78, 26);
             this.hard.TabIndex = 12;
             this.hard.Text = "Hard";
             this.hard.UseVisualStyleBackColor = true;
