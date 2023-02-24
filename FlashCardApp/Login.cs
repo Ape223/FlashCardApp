@@ -76,5 +76,12 @@ namespace FlashCardApp
             }
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var a = new Main();
+            a.Show();
+            this.Dispose();
+        }
     }
 }

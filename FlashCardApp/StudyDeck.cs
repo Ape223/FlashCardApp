@@ -8,7 +8,7 @@ namespace FlashCardApp
         //A list of all the decks that have been loaded
         List<Flashcard[]> decks = new List<Flashcard[]>();
         //A list of all the cards available for study
-        List<Flashcard> allCards = new List<Flashcard>();
+        DoublyLinkedList allCards = new DoublyLinkedList();
         //Keeps track of the current card that needs to be shown
         int current = 0;
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
@@ -39,14 +39,17 @@ namespace FlashCardApp
                     listBox1.Items.Add($"{fileName.Replace(".json", "")}: {Convert.ToString(deck.Length)} cards");
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
                     decks.Add(deck);
-                    allCards.AddRange(deck);
+                    foreach(Flashcard f in deck)
+                    {
+                        allCards.Queue(f);
+                    }
                     showTerm(allCards, current);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("An error occured while trying to load the flashcard deck.\n\nException message: " + ex.Message, "Warning: Deck not loaded");
                 }
-                label2.Text = ($"Cards loaded: {allCards.Count}");
+                label2.Text = ($"Cards loaded: {allCards.Count()}");
             }
         }
         //Card with the earliest review date needs to be reviewed first
@@ -102,7 +105,7 @@ namespace FlashCardApp
             int selectedIndex = listBox1.SelectedIndex;
             foreach (Flashcard x in decks[selectedIndex])
             {
-                    allCards.Remove(x);
+                    allCards.remove(x);
             }
             listBox1.Items.RemoveAt(selectedIndex);
             label2.Text = ($"Cards loaded: {allCards.Count}");
@@ -120,9 +123,9 @@ namespace FlashCardApp
             }
             else
             {
-                if (card.Text == allCards[current].Term.ToString())
+                if (card.Text == allCards.index(current).Term.ToString())
                 {
-                    card.Text = allCards[current].Definition.ToString();
+                    card.Text = allCards.index(current).Definition.ToString();
                     easy.Visible = medium.Visible = hard.Visible = true;
                 }
                 else
@@ -131,9 +134,9 @@ namespace FlashCardApp
                 }
             }
         }
-        private void showTerm(List<Flashcard> allCards, int current)
+        private void showTerm(DoublyLinkedList allCards, int current)
         {
-            card.Text = allCards[current].Term.ToString();
+            card.Text = allCards.index(current).Term.ToString();
             easy.Visible = medium.Visible = hard.Visible = false;
         }
 
@@ -152,7 +155,8 @@ namespace FlashCardApp
 
         private void next_Click(object sender, EventArgs e)
         {
-            if (current == allCards.Count-1)
+            int temp = allCards.Count();
+            if (current == temp - 1)
             {
                 current = 0;
                 showTerm(allCards, current);
@@ -181,7 +185,7 @@ namespace FlashCardApp
         }
         private string change_next_review(int current, int level)
         {
-            DateTime previousreview = DateTime.Parse(allCards[current].DateReview);
+            DateTime previousreview = DateTime.Parse(allCards.index(current).DateReview);
             switch (level)
             {
                 case 1:
@@ -202,27 +206,17 @@ namespace FlashCardApp
         private void easy_Click(object sender, EventArgs e)
         {
             string newdate = change_next_review(current, 1);
-            allCards[current].DateReview = newdate;
+            allCards.index(current).DateReview = newdate;
         }
         private void medium_Click(object sender, EventArgs e)
         {
             string newdate = change_next_review(current, 2);
-            allCards[current].DateReview = newdate;
+            allCards.index(current).DateReview = newdate;
         }
         private void hard_Click(object sender, EventArgs e)
         {
             string newdate = change_next_review(current, 3);
-            allCards[current].DateReview = newdate;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void StudyDeck_Load(object sender, EventArgs e)
-        {
-
+            allCards.index(current).DateReview = newdate;
         }
     }
 }

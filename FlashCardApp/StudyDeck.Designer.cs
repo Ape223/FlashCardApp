@@ -60,7 +60,6 @@
             this.label1.Size = new System.Drawing.Size(406, 61);
             this.label1.TabIndex = 1;
             this.label1.Text = "Study Flashcard";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // LoadDeck
             // 
@@ -175,7 +174,6 @@
             this.Name = "StudyDeck";
             this.Text = "StudyDeck";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StudyDeck_FormClosing);
-            this.Load += new System.EventHandler(this.StudyDeck_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

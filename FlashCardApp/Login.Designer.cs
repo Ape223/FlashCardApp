@@ -35,11 +35,12 @@
             this.userText = new System.Windows.Forms.TextBox();
             this.passwordText = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Yu Mincho", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(261, 207);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 34);
@@ -50,7 +51,7 @@
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Yu Mincho", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(387, 206);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 35);
@@ -62,20 +63,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Yu Mincho Demibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(36, 109);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 27);
+            this.label1.Size = new System.Drawing.Size(125, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "Username:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Yu Mincho Demibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(36, 159);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 27);
+            this.label2.Size = new System.Drawing.Size(121, 25);
             this.label2.TabIndex = 3;
             this.label2.Text = "Password:";
             // 
@@ -98,18 +99,29 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Yu Mincho", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label3.Location = new System.Drawing.Point(30, 19);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(224, 62);
+            this.label3.Size = new System.Drawing.Size(224, 55);
             this.label3.TabIndex = 6;
             this.label3.Text = "Welcome";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(322, 47);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(491, 269);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.passwordText);
             this.Controls.Add(this.userText);
@@ -133,5 +145,6 @@
         private TextBox userText;
         private TextBox passwordText;
         private Label label3;
+        private Button button3;
     }
 }
