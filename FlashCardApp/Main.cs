@@ -5,8 +5,10 @@ namespace FlashCardApp
         public Main()
         {
             InitializeComponent();
+            this.Hide();
+            var b = new Login();
+            b.Show();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             var a = new StudyDeck();
@@ -23,6 +25,11 @@ namespace FlashCardApp
         private void button3_Click(object sender, EventArgs e)
         {
             System.Environment.Exit(0);
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

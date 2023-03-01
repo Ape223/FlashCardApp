@@ -198,7 +198,6 @@
             this.ShowInTaskbar = false;
             this.Text = "Create Your flashcard deck";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateFlashcard_FormClosing);
-            this.Load += new System.EventHandler(this.CreateFlashcard_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

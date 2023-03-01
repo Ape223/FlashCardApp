@@ -16,14 +16,13 @@ namespace FlashCardApp
         private Node last;
         private int count;
         public DoublyLinkedList()
-        {
+        {   
             head = new Node(null);
             count = 0;
         }
         //Pushes a value into the first place of the list
         public void push(Flashcard f)
         {
-            count++;
             Node new_node = new Node(f);
             new_node.next = head;
             new_node.prev = null;
@@ -33,21 +32,30 @@ namespace FlashCardApp
                 head.prev = new_node;
             }
             head = new_node;
+            count++;
         }
         //Adds a value to the last place of the list
         public void Queue(Flashcard f)
         {
+            if (count == 0)
+            {
+                head = new Node(f);
+                head.next = head.prev = head;
+            }
+            else
+            {
+                Node new_node = new Node(f);
+                new_node.next = head;
+                new_node.prev = findLast();
+                findLast().next = new_node;
+                head.prev = new_node;
+            }
             count++;
-            Node new_node = new Node(f);
-            new_node.next = head;
-            new_node.prev = findLast();
-            findLast().next = new_node;
-            head.prev = new_node;
         }
         public Node findLast()
         {
             Node cur = head;
-            while (cur.next != null)
+            while (cur.next != head)
             {
                 cur = cur.next;
             }

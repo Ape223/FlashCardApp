@@ -120,10 +120,5 @@ namespace FlashCardApp
             var a = new Main();
             a.Show();
         }
-
-        private void CreateFlashcard_Load(object sender, EventArgs e)
-        {
-
-        }
     }   
 }

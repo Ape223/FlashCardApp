@@ -39,6 +39,8 @@
             this.easy = new System.Windows.Forms.Button();
             this.medium = new System.Windows.Forms.Button();
             this.hard = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.currCard = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBox1
@@ -155,11 +157,31 @@
             this.hard.UseVisualStyleBackColor = true;
             this.hard.Click += new System.EventHandler(this.hard_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(472, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 13);
+            this.label3.TabIndex = 13;
+            // 
+            // currCard
+            // 
+            this.currCard.AutoSize = true;
+            this.currCard.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.currCard.Location = new System.Drawing.Point(405, 32);
+            this.currCard.Name = "currCard";
+            this.currCard.Size = new System.Drawing.Size(97, 19);
+            this.currCard.TabIndex = 14;
+            this.currCard.Text = "Current card:";
+            // 
             // StudyDeck
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 390);
+            this.Controls.Add(this.currCard);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.hard);
             this.Controls.Add(this.medium);
             this.Controls.Add(this.easy);
@@ -192,5 +214,7 @@
         private Button easy;
         private Button medium;
         private Button hard;
+        private Label label3;
+        private Label currCard;
     }
 }

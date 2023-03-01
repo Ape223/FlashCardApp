@@ -11,9 +11,7 @@ namespace FlashCardApp
         DoublyLinkedList allCards = new DoublyLinkedList();
         //Keeps track of the current card that needs to be shown
         int current = 0;
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public StudyDeck()
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             InitializeComponent();
             easy.Visible = medium.Visible = hard.Visible = false;
@@ -32,18 +30,15 @@ namespace FlashCardApp
                     fileName = Path.GetFileName(open1.FileName);
                     string serialise = File.ReadAllText(open1.FileName);
                     MessageBox.Show("Flashcard deck loaded succesfully!", "Success");
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                     Flashcard[] deck = JsonSerializer.Deserialize<Flashcard[]>(serialise);
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
                     listBox1.Items.Add($"{fileName.Replace(".json", "")}: {Convert.ToString(deck.Length)} cards");
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
                     decks.Add(deck);
                     foreach(Flashcard f in deck)
                     {
                         allCards.Queue(f);
                     }
                     showTerm(allCards, current);
+                    currCard.Text = $"Current card: {current+1} of {allCards.Count()}";
                 }
                 catch (Exception ex)
                 {
@@ -149,8 +144,10 @@ namespace FlashCardApp
             }
             else
             {
-                MessageBox.Show("This is the first card!", "Warning: Out of range");
+                current = allCards.Count();
+                showTerm(allCards, current);
             }
+            currCard.Text = $"Current card: {current+1} of {allCards.Count()}";
         }
 
         private void next_Click(object sender, EventArgs e)
@@ -166,6 +163,7 @@ namespace FlashCardApp
                 current = current + 1;
                 showTerm(allCards, current);
             }
+            currCard.Text = $"Current card: {current+1} of {allCards.Count()}";
         }
 
         private void StudyDeck_FormClosing(object sender, FormClosingEventArgs e)
