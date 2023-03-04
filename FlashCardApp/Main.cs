@@ -6,8 +6,6 @@ namespace FlashCardApp
         {
             InitializeComponent();
             this.Hide();
-            var b = new Login();
-            b.Show();
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -27,9 +25,9 @@ namespace FlashCardApp
             System.Environment.Exit(0);
         }
 
-        private void Main_Load(object sender, EventArgs e)
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            Application.Exit();
         }
     }
 }

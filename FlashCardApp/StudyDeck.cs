@@ -70,7 +70,7 @@ namespace FlashCardApp
             List<Flashcard> sorted = new List<Flashcard>();
             while (list_a.Count > 0 && list_b.Count > 0)
             {
-                if (System.DateTime.Parse(list_a[0].DateReview) < System.DateTime.Parse(list_b[0].DateReview))
+                if (list_a[0].DateReview < list_b[0].DateReview)
                 {
                     sorted.Add(list_a[0]);
                     list_a.RemoveAt(0);
@@ -122,6 +122,7 @@ namespace FlashCardApp
                 {
                     card.Text = allCards.index(current).Definition.ToString();
                     easy.Visible = medium.Visible = hard.Visible = true;
+                    card.Enabled = false;
                 }
                 else
                 {
@@ -137,6 +138,7 @@ namespace FlashCardApp
 
         private void previous_Click(object sender, EventArgs e)
         {
+            card.Enabled = true;
             if (current > 0)
             {
                 current = current - 1;
@@ -152,6 +154,7 @@ namespace FlashCardApp
 
         private void next_Click(object sender, EventArgs e)
         {
+            card.Enabled = true;
             int temp = allCards.Count();
             if (current == temp - 1)
             {
@@ -181,40 +184,23 @@ namespace FlashCardApp
                     MessageBox.Show("An error occured while trying to save the flashcard set.\n\nException message: " + ex.Message, "Warning: Deck not saved");
                 }
         }
-        private string change_next_review(int current, int level)
-        {
-            DateTime previousreview = DateTime.Parse(allCards.index(current).DateReview);
-            switch (level)
-            {
-                case 1:
-                    previousreview = previousreview.AddDays(1);
-                    break;
-                case 2:
-                    previousreview = previousreview.AddDays(7);
-                    break;
-                case 3:
-                    previousreview = previousreview.AddDays(14);
-                    break;
-                default:
-                    MessageBox.Show("An error occured whilst changing the date of next review", "Warning: switch statement error");
-                    break;
-            }
-            return previousreview.ToString();
-        }
+
         private void easy_Click(object sender, EventArgs e)
         {
-            string newdate = change_next_review(current, 1);
-            allCards.index(current).DateReview = newdate;
+            allCards.index(current).SM2(allCards.index(current), 1);
         }
         private void medium_Click(object sender, EventArgs e)
         {
-            string newdate = change_next_review(current, 2);
-            allCards.index(current).DateReview = newdate;
+            allCards.index(current).SM2(allCards.index(current), 3);
         }
         private void hard_Click(object sender, EventArgs e)
         {
-            string newdate = change_next_review(current, 3);
-            allCards.index(current).DateReview = newdate;
+            allCards.index(current).SM2(allCards.index(current), 5);
+        }
+
+        private void StudyDeck_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

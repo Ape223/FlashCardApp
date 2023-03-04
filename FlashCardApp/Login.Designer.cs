@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.SignUp = new System.Windows.Forms.Button();
+            this.a_Login = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.userText = new System.Windows.Forms.TextBox();
@@ -38,27 +38,27 @@
             this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // SignUp
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(261, 207);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 34);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Sign Up";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.SignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SignUp.Location = new System.Drawing.Point(261, 207);
+            this.SignUp.Name = "SignUp";
+            this.SignUp.Size = new System.Drawing.Size(108, 34);
+            this.SignUp.TabIndex = 0;
+            this.SignUp.Text = "Sign Up";
+            this.SignUp.UseVisualStyleBackColor = true;
+            this.SignUp.Click += new System.EventHandler(this.SignUp_Click);
             // 
-            // button2
+            // a_Login
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(387, 206);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 35);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Login";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.a_Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.a_Login.Location = new System.Drawing.Point(387, 206);
+            this.a_Login.Name = "a_Login";
+            this.a_Login.Size = new System.Drawing.Size(87, 35);
+            this.a_Login.TabIndex = 1;
+            this.a_Login.Text = "Login";
+            this.a_Login.UseVisualStyleBackColor = true;
+            this.a_Login.Click += new System.EventHandler(this.a_Login_Click);
             // 
             // label1
             // 
@@ -127,10 +127,11 @@
             this.Controls.Add(this.userText);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.a_Login);
+            this.Controls.Add(this.SignUp);
             this.Name = "Login";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,8 +139,8 @@
 
         #endregion
 
-        private Button button1;
-        private Button button2;
+        private Button SignUp;
+        private Button a_Login;
         private Label label1;
         private Label label2;
         private TextBox userText;

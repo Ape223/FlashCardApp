@@ -16,13 +16,7 @@ namespace FlashCardApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Sets first form to show up
-            do
-            {
-                var fw = new Login();
-                Application.Run(fw);
-            } while (!fw.checked);
-
-            Application.Run(new Main());
+            Application.Run(new Login());
             }
     }
 }

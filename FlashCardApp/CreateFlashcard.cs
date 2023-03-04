@@ -39,9 +39,7 @@ namespace FlashCardApp
             //Creates a new flashcard object and adds it to the listbox on the right side of the screen
             private void addCard_Click(object sender, EventArgs e)
         {
-#pragma warning disable CS8604 // Possible null reference argument.
-            Flashcard flashcard = new Flashcard(term.Text, definition.Text, Convert.ToString(DateTime.Today));
-#pragma warning restore CS8604 // Possible null reference argument.
+            Flashcard flashcard = new Flashcard(term.Text, definition.Text, DateTime.Today);
             if (term.Text == "" || definition.Text == "")   
             {
                 MessageBox.Show("You cannot saved an empty flashcard!", "Warning: Empty flashcard");
@@ -67,15 +65,11 @@ namespace FlashCardApp
                     {
                         string serialise = File.ReadAllText(open1.FileName);
                         MessageBox.Show("Flashcard set loaded succesfully!", "Success");
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                         List<Flashcard> deck = JsonSerializer.Deserialize<List<Flashcard>>(serialise);
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
                         foreach(Flashcard x in deck)
                     {
                         listBox1.Items.Add(x);
                     }
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
                     }
                     catch (Exception ex)
                     {
@@ -83,17 +77,7 @@ namespace FlashCardApp
                     }
                 }
             }
-            
-            //Changes the font of the text,
-            //Currently does not save, maybe remove later?
-            private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-            {
-                //https://stackoverflow.com/questions/19834635/how-to-set-textbox-font-size-in-c
-               // Font fnt = new Font(term.Font.FontFamily, Convert.ToInt32(comboBox1.Text));
-                //term.Font = fnt;
-               // definition.Font = fnt;
-            }
-        //Event handler for when the user removes a card from the deck.
+
         //Gets the position of the card specified, then removes it from the list box.
         private void removeCard_Click(object sender, EventArgs e)
         {
@@ -119,6 +103,11 @@ namespace FlashCardApp
             }
             var a = new Main();
             a.Show();
+        }
+
+        private void CreateFlashcard_Load(object sender, EventArgs e)
+        {
+
         }
     }   
 }

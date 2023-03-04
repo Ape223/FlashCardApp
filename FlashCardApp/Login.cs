@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 namespace FlashCardApp
 {
     public partial class Login : Form
@@ -15,8 +17,10 @@ namespace FlashCardApp
         public Login()
         {
             InitializeComponent();
+            passwordText.PasswordChar = '*';
+
         }
-        
+
         private void update_DB(string query, bool b)
         {
             var obj = new Connection();
@@ -47,7 +51,7 @@ namespace FlashCardApp
             }
             obj.connection.Close();
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void SignUp_Click(object sender, EventArgs e)
         {
             //Add a new entry into the database
             if (userText.Text != null && passwordText.Text != null)
@@ -62,7 +66,7 @@ namespace FlashCardApp
             } else { MessageBox.Show("Fields cannot be empty!"); }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void a_Login_Click(object sender, EventArgs e)
         {
             //Perform a query for the user's login details
             if (userText.Text != null && passwordText.Text != null)
@@ -80,7 +84,12 @@ namespace FlashCardApp
         {
             var a = new Main();
             a.Show();
-            this.Dispose(); 
+            this.Hide(); 
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

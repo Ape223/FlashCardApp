@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using Microsoft.Identity.Client;
-
+using System.Reflection;
+using System.IO;
 namespace FlashCardApp
 {
     internal class Connection

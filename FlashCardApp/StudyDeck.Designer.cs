@@ -76,7 +76,7 @@
             // 
             // card
             // 
-            this.card.Location = new System.Drawing.Point(223, 62);
+            this.card.Location = new System.Drawing.Point(222, 62);
             this.card.Name = "card";
             this.card.Size = new System.Drawing.Size(412, 324);
             this.card.TabIndex = 5;
@@ -196,6 +196,7 @@
             this.Name = "StudyDeck";
             this.Text = "StudyDeck";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StudyDeck_FormClosing);
+            this.Load += new System.EventHandler(this.StudyDeck_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
