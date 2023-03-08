@@ -29,44 +29,44 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.studyFlashcard = new System.Windows.Forms.Button();
+            this.createFlashcard = new System.Windows.Forms.Button();
+            this.quitProgram = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // studyFlashcard
             // 
-            this.button1.Font = new System.Drawing.Font("Yu Mincho", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(0, 94);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(665, 89);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Study a deck";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.studyFlashcard.Font = new System.Drawing.Font("Yu Mincho", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.studyFlashcard.Location = new System.Drawing.Point(0, 94);
+            this.studyFlashcard.Name = "studyFlashcard";
+            this.studyFlashcard.Size = new System.Drawing.Size(665, 89);
+            this.studyFlashcard.TabIndex = 0;
+            this.studyFlashcard.Text = "Study a deck";
+            this.studyFlashcard.UseVisualStyleBackColor = true;
+            this.studyFlashcard.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // createFlashcard
             // 
-            this.button2.Font = new System.Drawing.Font("Yu Mincho", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button2.Location = new System.Drawing.Point(0, 198);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(665, 89);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Create a deck";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.createFlashcard.Font = new System.Drawing.Font("Yu Mincho", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.createFlashcard.Location = new System.Drawing.Point(0, 198);
+            this.createFlashcard.Name = "createFlashcard";
+            this.createFlashcard.Size = new System.Drawing.Size(665, 89);
+            this.createFlashcard.TabIndex = 1;
+            this.createFlashcard.Text = "Create a deck";
+            this.createFlashcard.UseVisualStyleBackColor = true;
+            this.createFlashcard.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // quitProgram
             // 
-            this.button3.Font = new System.Drawing.Font("Yu Mincho", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button3.Location = new System.Drawing.Point(0, 301);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(665, 89);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Quit the app\r\n";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.quitProgram.Font = new System.Drawing.Font("Yu Mincho", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.quitProgram.Location = new System.Drawing.Point(0, 301);
+            this.quitProgram.Name = "quitProgram";
+            this.quitProgram.Size = new System.Drawing.Size(665, 89);
+            this.quitProgram.TabIndex = 2;
+            this.quitProgram.Text = "Quit the app\r\n";
+            this.quitProgram.UseVisualStyleBackColor = true;
+            this.quitProgram.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
             // 
@@ -77,6 +77,7 @@
             this.label1.Size = new System.Drawing.Size(492, 82);
             this.label1.TabIndex = 3;
             this.label1.Text = "FlashCard App";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Main
             // 
@@ -84,9 +85,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(665, 390);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.quitProgram);
+            this.Controls.Add(this.createFlashcard);
+            this.Controls.Add(this.studyFlashcard);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.Text = "Main menu";
@@ -98,9 +99,9 @@
 
         #endregion
 
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button studyFlashcard;
+        private Button createFlashcard;
+        private Button quitProgram;
         private Label label1;
     }
 }

@@ -4,17 +4,19 @@ namespace FlashCardApp
 {
     public partial class StudyDeck : Form
     {
-        string fileName;
+        private string fileName;
         //A list of all the decks that have been loaded
-        List<Flashcard[]> decks = new List<Flashcard[]>();
+        private List<Flashcard[]> decks = new List<Flashcard[]>();
         //A list of all the cards available for study
-        DoublyLinkedList allCards = new DoublyLinkedList();
+        private DoublyLinkedList allCards = new DoublyLinkedList();
         //Keeps track of the current card that needs to be shown
-        int current = 0;
+        private int current = 0;
+        private string dirpath = Path.Combine(Main.desktopPath, "Flashcard decks");
         public StudyDeck()
         {
             InitializeComponent();
             easy.Visible = medium.Visible = hard.Visible = false;
+            card.BackColor = Color.LightGray;
         }
         //Loads deck from the user's computer, then adds all cards to the allcards list.
         //Adds an indicator to the listbox1 control indicating the name of the deck and how many cards have been loaded.
@@ -23,17 +25,31 @@ namespace FlashCardApp
         {
             OpenFileDialog open1 = new OpenFileDialog();
             open1.Filter = "JSON Files (*.json)|*.json|All files (*.*)|*.*";
+            open1.InitialDirectory = dirpath;   
             if (open1.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
+                    List<Flashcard> temp = new List<Flashcard>();
                     fileName = Path.GetFileName(open1.FileName);
                     string serialise = File.ReadAllText(open1.FileName);
                     MessageBox.Show("Flashcard deck loaded succesfully!", "Success");
                     Flashcard[] deck = JsonSerializer.Deserialize<Flashcard[]>(serialise);
-                    listBox1.Items.Add($"{fileName.Replace(".json", "")}: {Convert.ToString(deck.Length)} cards");
+                    decksList.Items.Add($"{fileName.Replace(".json", "")}: {Convert.ToString(deck.Length)} cards");
                     decks.Add(deck);
                     foreach(Flashcard f in deck)
+                    {
+                        if (f.DateReview > DateTime.Now)
+                        {
+                           //do nothing
+                        }
+                        else
+                        {
+                            temp.Add(f);
+                        }
+                    }
+                    temp = mergesort(temp);
+                    foreach (Flashcard f in temp)
                     {
                         allCards.Queue(f);
                     }
@@ -97,17 +113,29 @@ namespace FlashCardApp
             //Will not work after a shuffle
             //Or store all cards as a list of individual sets
             //Will have to create new variables based on what the user loads
-            int selectedIndex = listBox1.SelectedIndex;
-            foreach (Flashcard x in decks[selectedIndex])
+            if (decksList.Items.Count != 0)
             {
+                int selectedIndex = decksList.SelectedIndex;
+                string filename = decksList.SelectedItem.ToString().Substring(0, decksList.SelectedItem.ToString().IndexOf(":")) + ".json";
+                List<Flashcard> temp = new List<Flashcard>();
+                foreach (Flashcard x in decks[selectedIndex])
+                {
                     allCards.remove(x);
+                    temp.Add(x);
+                }
+                decksList.Items.RemoveAt(selectedIndex);
+                label2.Text = ($"Cards loaded: {allCards.Count}");
+                //save
+                string serialize = JsonSerializer.Serialize(temp);
+                string fullfile = Path.Combine(dirpath, filename);
+                File.WriteAllText(fullfile, serialize);
             }
-            listBox1.Items.RemoveAt(selectedIndex);
-            label2.Text = ($"Cards loaded: {allCards.Count}");
-            //save
-            string serialize = JsonSerializer.Serialize(decks[selectedIndex]);
-            File.WriteAllText(fileName, serialize);
-            MessageBox.Show("Flashcard set saved succesfully!", "Success");
+            if (decksList.Items.Count == 0)
+            {
+                label2.Text = ("Cards loaded: 0");
+                allCards.delAll();
+            }
+
         }
 
         private void card_Click(object sender, EventArgs e)
@@ -146,10 +174,10 @@ namespace FlashCardApp
             }
             else
             {
-                current = allCards.Count();
+                current = allCards.Count() - 1;
                 showTerm(allCards, current);
             }
-            currCard.Text = $"Current card: {current+1} of {allCards.Count()}";
+            currCard.Text = $"Current card: {current + 1} of {allCards.Count()}";
         }
 
         private void next_Click(object sender, EventArgs e)
@@ -171,18 +199,17 @@ namespace FlashCardApp
 
         private void StudyDeck_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var z = new Main();
-            z.Show();
             //saves all loaded decks
-            string serialize = JsonSerializer.Serialize(allCards);
-                try
-                {
-                    File.WriteAllText(fileName, serialize);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occured while trying to save the flashcard set.\n\nException message: " + ex.Message, "Warning: Deck not saved");
-                }
+            if (decksList.Items.Count != 0)
+            {
+                MessageBox.Show("All decks need to be unloaded before closing the program.");
+                e.Cancel = true;
+            }
+            else
+            {
+                var z = new Main();
+                z.Show();
+            }
         }
 
         private void easy_Click(object sender, EventArgs e)
@@ -201,6 +228,11 @@ namespace FlashCardApp
         private void StudyDeck_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void card_EnabledChanged(object sender, EventArgs e)
+        {
+            card.BackColor = Color.LightGray;
         }
     }
 }

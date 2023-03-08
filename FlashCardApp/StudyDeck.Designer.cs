@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.decksList = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.LoadDeck = new System.Windows.Forms.Button();
+            this.loadDeck = new System.Windows.Forms.Button();
             this.card = new System.Windows.Forms.Button();
-            this.RemoveDeck = new System.Windows.Forms.Button();
+            this.removeDeck = new System.Windows.Forms.Button();
             this.previous = new System.Windows.Forms.Button();
             this.next = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,15 +43,15 @@
             this.currCard = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // listBox1
+            // decksList
             // 
-            this.listBox1.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 19;
-            this.listBox1.Location = new System.Drawing.Point(3, 122);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(175, 251);
-            this.listBox1.TabIndex = 0;
+            this.decksList.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.decksList.FormattingEnabled = true;
+            this.decksList.ItemHeight = 19;
+            this.decksList.Location = new System.Drawing.Point(3, 122);
+            this.decksList.Name = "decksList";
+            this.decksList.Size = new System.Drawing.Size(175, 251);
+            this.decksList.TabIndex = 0;
             // 
             // label1
             // 
@@ -63,16 +63,16 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Study Flashcard";
             // 
-            // LoadDeck
+            // loadDeck
             // 
-            this.LoadDeck.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoadDeck.Location = new System.Drawing.Point(3, 62);
-            this.LoadDeck.Name = "LoadDeck";
-            this.LoadDeck.Size = new System.Drawing.Size(175, 25);
-            this.LoadDeck.TabIndex = 2;
-            this.LoadDeck.Text = "Load deck";
-            this.LoadDeck.UseVisualStyleBackColor = true;
-            this.LoadDeck.Click += new System.EventHandler(this.LoadDeck_Click);
+            this.loadDeck.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadDeck.Location = new System.Drawing.Point(3, 62);
+            this.loadDeck.Name = "loadDeck";
+            this.loadDeck.Size = new System.Drawing.Size(175, 25);
+            this.loadDeck.TabIndex = 2;
+            this.loadDeck.Text = "Load deck";
+            this.loadDeck.UseVisualStyleBackColor = true;
+            this.loadDeck.Click += new System.EventHandler(this.LoadDeck_Click);
             // 
             // card
             // 
@@ -81,18 +81,19 @@
             this.card.Size = new System.Drawing.Size(412, 324);
             this.card.TabIndex = 5;
             this.card.UseVisualStyleBackColor = true;
+            this.card.EnabledChanged += new System.EventHandler(this.card_EnabledChanged);
             this.card.Click += new System.EventHandler(this.card_Click);
             // 
-            // RemoveDeck
+            // removeDeck
             // 
-            this.RemoveDeck.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RemoveDeck.Location = new System.Drawing.Point(3, 92);
-            this.RemoveDeck.Name = "RemoveDeck";
-            this.RemoveDeck.Size = new System.Drawing.Size(175, 25);
-            this.RemoveDeck.TabIndex = 6;
-            this.RemoveDeck.Text = "Remove Deck";
-            this.RemoveDeck.UseVisualStyleBackColor = true;
-            this.RemoveDeck.Click += new System.EventHandler(this.RemoveDeck_Click);
+            this.removeDeck.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removeDeck.Location = new System.Drawing.Point(3, 92);
+            this.removeDeck.Name = "removeDeck";
+            this.removeDeck.Size = new System.Drawing.Size(175, 25);
+            this.removeDeck.TabIndex = 6;
+            this.removeDeck.Text = "Remove Deck";
+            this.removeDeck.UseVisualStyleBackColor = true;
+            this.removeDeck.Click += new System.EventHandler(this.RemoveDeck_Click);
             // 
             // previous
             // 
@@ -127,7 +128,7 @@
             // easy
             // 
             this.easy.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.easy.Location = new System.Drawing.Point(307, 352);
+            this.easy.Location = new System.Drawing.Point(475, 352);
             this.easy.Name = "easy";
             this.easy.Size = new System.Drawing.Size(78, 26);
             this.easy.TabIndex = 10;
@@ -149,7 +150,7 @@
             // hard
             // 
             this.hard.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hard.Location = new System.Drawing.Point(476, 352);
+            this.hard.Location = new System.Drawing.Point(307, 352);
             this.hard.Name = "hard";
             this.hard.Size = new System.Drawing.Size(78, 26);
             this.hard.TabIndex = 12;
@@ -188,11 +189,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.next);
             this.Controls.Add(this.previous);
-            this.Controls.Add(this.RemoveDeck);
+            this.Controls.Add(this.removeDeck);
             this.Controls.Add(this.card);
-            this.Controls.Add(this.LoadDeck);
+            this.Controls.Add(this.loadDeck);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.decksList);
             this.Name = "StudyDeck";
             this.Text = "StudyDeck";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StudyDeck_FormClosing);
@@ -204,11 +205,11 @@
 
         #endregion
 
-        private ListBox listBox1;
+        private ListBox decksList;
         private Label label1;
-        private Button LoadDeck;
+        private Button loadDeck;
         private Button card;
-        private Button RemoveDeck;
+        private Button removeDeck;
         private Button previous;
         private Button next;
         private Label label2;

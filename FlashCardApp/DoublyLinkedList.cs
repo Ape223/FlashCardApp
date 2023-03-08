@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -25,8 +26,14 @@ namespace FlashCardApp
         {
             Node new_node = new Node(f);
             new_node.next = head;
-            new_node.prev = null;
-
+            if (last != null)
+            {
+                new_node.prev = last;
+            }
+            else
+            {
+                new_node.prev = null;
+            }
             if (head != null)
             {
                 head.prev = new_node;
@@ -46,21 +53,14 @@ namespace FlashCardApp
             {
                 Node new_node = new Node(f);
                 new_node.next = head;
-                new_node.prev = findLast();
-                findLast().next = new_node;
+                new_node.prev = last;
+                last.next = new_node;
                 head.prev = new_node;
+                last = new_node;
             }
             count++;
         }
-        public Node findLast()
-        {
-            Node cur = head;
-            while (cur.next != head)
-            {
-                cur = cur.next;
-            }
-            return cur;
-        }
+
         //Inserts a node after the specified one
         public void insert(Flashcard f, Node prev)
         {
@@ -113,29 +113,39 @@ namespace FlashCardApp
         {
             //This will find the node that is associated with the flashcard f
             Node f = find(c);
-            if(head == f)
+            Node temp = f.prev;
+            f.prev = f.next;
+            f.next = temp;
+        }
+        public void RemoveByIndex(int index)
+        {
+            Node f = head;
+            for (int i = 0; i<index; i++)
             {
-                head = head.next;
+                f = f.next;
             }
-            else if (last == f)
-            {
-                last = last.prev;
-            }
-            else if (f == null)
-            {
-                MessageBox.Show("There is nothing being deleted!");
-            }
-            else
-            {
-                Node temp = null;
-                temp = f.prev;
-                f.prev = f.next;
-                f.next = temp;
-            }
+            Node temp = f.prev;
+            f.prev = f.next;
+            f.next = temp;
+
         }
         public int Count()
         {
             return count;
+        }
+        public void delAll()
+        {
+            Node current = head;
+            while (current!= null)
+            {
+                Node nextNode = current.next;
+                current.prev = null;
+                current.next = null;
+                current = nextNode;
+            }
+            count = 0;
+            head = null;
+            last = null;
         }
     }
 }

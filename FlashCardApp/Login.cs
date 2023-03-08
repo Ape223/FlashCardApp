@@ -80,16 +80,22 @@ namespace FlashCardApp
             }
 
         }
-        private void button3_Click_1(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
             var a = new Main();
             a.Show();
-            this.Hide(); 
+            this.Hide();
         }
 
-        private void Login_Load(object sender, EventArgs e)
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            if (DialogResult != DialogResult.OK)
+            {
+                // The user has not successfully logged in.
+                // Terminate the message loop thread to exit the application.
+                Environment.Exit(0);
+            }
         }
     }
 }

@@ -2,10 +2,21 @@ namespace FlashCardApp
 {
     public partial class Main : Form
     {
+        public static string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         public Main()
         {
             InitializeComponent();
             this.Hide();
+            createFile();
+        }
+        private void createFile()
+        {
+            string dir = "Flashcard decks";
+            string dirpath = Path.Combine(desktopPath, dir);
+            if (!Directory.Exists(dirpath))
+            {
+                Directory.CreateDirectory(dirpath);
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -28,6 +39,11 @@ namespace FlashCardApp
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

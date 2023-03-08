@@ -24,8 +24,15 @@ namespace FlashCardApp
         /// </summary>
         [JsonPropertyName("dateReview")]
         public DateTime DateReview { get;set; }
-        public int reps;
-        public double ease;
+        /// <summary>
+        /// Number of times the flashcard has been seen 
+        /// </summary>
+        [JsonPropertyName("reps")]
+        public int reps { get; set; }
+        /// <summary>
+        /// EF of the flashcard
+        /// </summary>
+        public double ease { get; set; }
         public Flashcard(string term, string definition, DateTime dateReview)
         {
             Term = term;

@@ -34,15 +34,16 @@
             this.loadDeck = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.term = new System.Windows.Forms.TextBox();
+            this.termText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.definition = new System.Windows.Forms.TextBox();
+            this.definitionText = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.cardList = new System.Windows.Forms.ListBox();
             this.addCard = new System.Windows.Forms.Button();
             this.removeCard = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.clearCards = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // saveDeck
@@ -91,41 +92,43 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Yu Mincho", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(4, 156);
+            this.label3.Location = new System.Drawing.Point(4, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 31);
             this.label3.TabIndex = 13;
             this.label3.Text = "Term:";
             // 
-            // term
+            // termText
             // 
-            this.term.Font = new System.Drawing.Font("Yu Mincho", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.term.Location = new System.Drawing.Point(10, 190);
-            this.term.MinimumSize = new System.Drawing.Size(343, 80);
-            this.term.Multiline = true;
-            this.term.Name = "term";
-            this.term.Size = new System.Drawing.Size(343, 80);
-            this.term.TabIndex = 14;
+            this.termText.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.termText.Location = new System.Drawing.Point(12, 142);
+            this.termText.MinimumSize = new System.Drawing.Size(343, 80);
+            this.termText.Multiline = true;
+            this.termText.Name = "termText";
+            this.termText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.termText.Size = new System.Drawing.Size(363, 100);
+            this.termText.TabIndex = 14;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Yu Mincho", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(4, 272);
+            this.label4.Location = new System.Drawing.Point(6, 245);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(130, 31);
             this.label4.TabIndex = 15;
             this.label4.Text = "Definition:";
             // 
-            // definition
+            // definitionText
             // 
-            this.definition.Font = new System.Drawing.Font("Yu Mincho", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.definition.Location = new System.Drawing.Point(10, 306);
-            this.definition.MinimumSize = new System.Drawing.Size(343, 80);
-            this.definition.Multiline = true;
-            this.definition.Name = "definition";
-            this.definition.Size = new System.Drawing.Size(343, 80);
-            this.definition.TabIndex = 17;
+            this.definitionText.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.definitionText.Location = new System.Drawing.Point(10, 279);
+            this.definitionText.MinimumSize = new System.Drawing.Size(343, 80);
+            this.definitionText.Multiline = true;
+            this.definitionText.Name = "definitionText";
+            this.definitionText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.definitionText.Size = new System.Drawing.Size(363, 100);
+            this.definitionText.TabIndex = 17;
             // 
             // label5
             // 
@@ -137,20 +140,20 @@
             this.label5.TabIndex = 18;
             this.label5.Text = "Flashcards in deck:";
             // 
-            // listBox1
+            // cardList
             // 
-            this.listBox1.Font = new System.Drawing.Font("Yu Mincho", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 14;
-            this.listBox1.Location = new System.Drawing.Point(403, 155);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(273, 172);
-            this.listBox1.TabIndex = 19;
+            this.cardList.Font = new System.Drawing.Font("Yu Mincho", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.cardList.FormattingEnabled = true;
+            this.cardList.ItemHeight = 19;
+            this.cardList.Location = new System.Drawing.Point(403, 155);
+            this.cardList.Name = "cardList";
+            this.cardList.Size = new System.Drawing.Size(273, 137);
+            this.cardList.TabIndex = 19;
             // 
             // addCard
             // 
             this.addCard.Font = new System.Drawing.Font("Yu Mincho", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addCard.Location = new System.Drawing.Point(403, 333);
+            this.addCard.Location = new System.Drawing.Point(403, 304);
             this.addCard.Name = "addCard";
             this.addCard.Size = new System.Drawing.Size(273, 27);
             this.addCard.TabIndex = 20;
@@ -161,7 +164,7 @@
             // removeCard
             // 
             this.removeCard.Font = new System.Drawing.Font("Yu Mincho", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.removeCard.Location = new System.Drawing.Point(403, 365);
+            this.removeCard.Location = new System.Drawing.Point(403, 337);
             this.removeCard.Name = "removeCard";
             this.removeCard.Size = new System.Drawing.Size(273, 26);
             this.removeCard.TabIndex = 21;
@@ -173,18 +176,30 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // clearCards
+            // 
+            this.clearCards.Font = new System.Drawing.Font("Yu Mincho", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearCards.Location = new System.Drawing.Point(401, 369);
+            this.clearCards.Name = "clearCards";
+            this.clearCards.Size = new System.Drawing.Size(273, 27);
+            this.clearCards.TabIndex = 23;
+            this.clearCards.Text = "Clear all cards";
+            this.clearCards.UseVisualStyleBackColor = true;
+            this.clearCards.Click += new System.EventHandler(this.clearCards_Click);
+            // 
             // CreateFlashcard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 398);
+            this.Controls.Add(this.clearCards);
             this.Controls.Add(this.removeCard);
             this.Controls.Add(this.addCard);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.cardList);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.definition);
+            this.Controls.Add(this.definitionText);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.term);
+            this.Controls.Add(this.termText);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.loadDeck);
@@ -198,7 +213,6 @@
             this.ShowInTaskbar = false;
             this.Text = "Create Your flashcard deck";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateFlashcard_FormClosing);
-            this.Load += new System.EventHandler(this.CreateFlashcard_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,14 +225,15 @@
         private Button loadDeck;
         private Label label2;
         private Label label3;
-        private TextBox term;
+        private TextBox termText;
         private Label label4;
-        private TextBox definition;
+        private TextBox definitionText;
         private Label label5;
-        private ListBox listBox1;
+        private ListBox cardList;
         private Button addCard;
         private Button removeCard;
         private OpenFileDialog openFileDialog1;
         private SaveFileDialog saveFileDialog1;
+        private Button clearCards;
     }
 }

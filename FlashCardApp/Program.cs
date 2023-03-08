@@ -16,7 +16,16 @@ namespace FlashCardApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Sets first form to show up
-            Application.Run(new Login());
-            }
+            Thread messageLoopThread = new Thread(() =>
+            {
+                Application.Run(new MainForm());
+            });
+            messageLoopThread.Start();
+
+            Application.Run(new LoginForm());
+
+            // Wait for the message loop thread to terminate.
+            messageLoopThread.Join();
+        }
     }
 }

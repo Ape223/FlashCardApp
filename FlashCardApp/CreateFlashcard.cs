@@ -3,22 +3,26 @@ namespace FlashCardApp
 {
     public partial class CreateFlashcard : Form
     {
+        private string desktopPath = Main.desktopPath;
         public CreateFlashcard()
         {
             InitializeComponent();
-        }
+            
+    }
 
         private void save_Click(object sender, EventArgs e)
         {
             //Creates a new deck of flashcards
             List<Flashcard> deck = new List<Flashcard>();
-            foreach(Flashcard x in listBox1.Items)
+            foreach(Flashcard x in cardList.Items)
             {
                 deck.Add(x);
             }
             string serialize = JsonSerializer.Serialize(deck);
 
             SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.InitialDirectory = Path.Combine(desktopPath, "Flashcard decks");
+            saveDialog.Title = "Please save only in THIS folder!";
             saveDialog.Filter = "JSON Files (*.json)|*.json|All files (*.*)|*.*";
 
             if (saveDialog.ShowDialog() == DialogResult.OK) // Ok button was pressed on the save dialog, save the JSON text
@@ -39,24 +43,24 @@ namespace FlashCardApp
             //Creates a new flashcard object and adds it to the listbox on the right side of the screen
             private void addCard_Click(object sender, EventArgs e)
         {
-            Flashcard flashcard = new Flashcard(term.Text, definition.Text, DateTime.Today);
-            if (term.Text == "" || definition.Text == "")   
+            Flashcard flashcard = new Flashcard(termText.Text, definitionText.Text, DateTime.Today);
+            if (termText.Text == "" || definitionText.Text == "")   
             {
                 MessageBox.Show("You cannot saved an empty flashcard!", "Warning: Empty flashcard");
                 return;
             }
             else
             {
-                listBox1.Items.Add(flashcard);
+                cardList.Items.Add(flashcard);
                 //Remove items from t and d for user friendliness
-                term.Text = "";
-                definition.Text = "";
+                termText.Text = "";
+                definitionText.Text = "";
             }
         }
 
             private void loadDeck_Click(object sender, EventArgs e)
             {
-                listBox1.Items.Clear();
+                cardList.Items.Clear();
                 OpenFileDialog open1 = new OpenFileDialog();
                 open1.Filter = "JSON Files (*.json)|*.json|All files (*.*)|*.*";
                 if (open1.ShowDialog() == DialogResult.OK)
@@ -68,7 +72,7 @@ namespace FlashCardApp
                         List<Flashcard> deck = JsonSerializer.Deserialize<List<Flashcard>>(serialise);
                         foreach(Flashcard x in deck)
                     {
-                        listBox1.Items.Add(x);
+                        cardList.Items.Add(x);
                     }
                     }
                     catch (Exception ex)
@@ -81,10 +85,10 @@ namespace FlashCardApp
         //Gets the position of the card specified, then removes it from the list box.
         private void removeCard_Click(object sender, EventArgs e)
         {
-            int selectedIndex = listBox1.SelectedIndex;
-            if (listBox1.SelectedIndex >= 0)
+            int selectedIndex = cardList.SelectedIndex;
+            if (cardList.SelectedIndex >= 0)
             {
-                listBox1.Items.RemoveAt(selectedIndex);
+                cardList.Items.RemoveAt(selectedIndex);
             }
             else
             {
@@ -93,7 +97,7 @@ namespace FlashCardApp
         }
         private void CreateFlashcard_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (listBox1.Items.Count > 0)
+            if (cardList.Items.Count > 0)
             {
                 if (MessageBox.Show("Are you sure you want to exit the window? All items in the set will be lost.", "Warning", MessageBoxButtons.YesNo) == DialogResult.No)
                 {
@@ -103,6 +107,10 @@ namespace FlashCardApp
             }
             var a = new Main();
             a.Show();
+        }
+        private void clearCards_Click(object sender, EventArgs e)
+        {
+            cardList.Items.Clear();
         }
 
         private void CreateFlashcard_Load(object sender, EventArgs e)
